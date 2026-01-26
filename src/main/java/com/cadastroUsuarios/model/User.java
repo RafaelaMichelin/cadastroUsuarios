@@ -31,4 +31,49 @@ public class User {
      @Column(name="email_user")
     private String email;
 
+
+    //Constructor 
+
+    public User(){}
+
+    public User(Long id, String name, LocalDate date, String email){
+        this.id = id;
+        this.name = name;
+        this.date = date;
+        this.email = email;
+    }
+    
+    //GETTERS E SETTERS
+    public Long getId(){
+        return id;
+    }
+
+    public void setId(Long id){
+        this.id = id;
+    }
+
+    public String getName(){
+        return name;
+    } 
+
+    public void setName(String name){
+        this.name = name;
+    }
+ 
+    public LocalDate getDate(){
+        return date;
+    }
+
+    public void setDate(LocalDate date){
+        this.date = date;
+    }
+
+    public String getEmail(){
+        return email;
+    }
+
+    public void setEmail(String email){
+        this.email = email;
+    }
+
 }
