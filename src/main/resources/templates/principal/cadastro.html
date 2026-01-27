@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html
+    xmlns:th="http://www.thymeleaf.org"
+    xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+
+    <title>Cadastro usuário</title>
+</head>
+<body>
+    <form action="/salvarUser" th:object="${user}" method="post">
+        <label>Nome</label>
+        <input type="text" th:field="*{name}"/>
+
+        <label>Email</label>
+        <input type="text" th:field="*{email}"/>
+        
+        <label>Data de nascimento</label>
+        <input type="date" th:field="*{date}"/>
+        
+        <input type="hidden" th:field="*{id}"/>
+
+        <button type="submit">Salvar</button>
+    </form>
+</body>
+</html>
