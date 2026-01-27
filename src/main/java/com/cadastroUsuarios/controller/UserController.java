@@ -1,9 +1,13 @@
 package com.cadastroUsuarios.controller;
 
+
+import java.util.Optional;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.servlet.ModelAndView;
 
@@ -22,7 +26,7 @@ public class UserController {
             return mv;
     }
 
-    
+
      //Salvar 
     @PostMapping("/salvarUser")
     public ModelAndView salvar(User user, BindingResult result){
@@ -32,4 +36,28 @@ public class UserController {
         userRepository.save(user);
         return cadastrar(new User());
     }
+
+      //Listagem 
+    @GetMapping("/listarUser")
+    public ModelAndView listar(){
+        ModelAndView mv = new ModelAndView("principal/lista");
+        mv.addObject("listarUser", userRepository.findAll());
+        return mv;
+    }
+
+     //Editar
+    @GetMapping("/editarUser/{id}")
+    public ModelAndView editar(@PathVariable("id") Long id){
+         Optional<User> user = userRepository.findById(id);
+         return cadastrar(user.get());
+    }
+
+    //Excluir 
+    @GetMapping("/excluirUser/{id}")
+    public ModelAndView excluir(@PathVariable("id")Long id){
+        Optional<User> user = userRepository.findById(id);
+        userRepository.delete(user.get());
+        return listar();
+    }
+
 }
