@@ -39,19 +39,26 @@
         <div class="mb-3">
         <label for="name" class="form-label">Nome</label>
         <input type="text" class="form-control" id="Name" th:field="*{name}"/>
+        <!--Mensagem de erro-->
+        <div th:if="${#fields.hasErrors('name')}" th:errors="*{name}"></div>
         </div>
 
         <div class="mb-3">
         <label for="email" class="form-label">Email</label>
         <input type="email" class="form-control" id="email" th:field="*{email}"/>
+        <!--Mensagem de erro-->
+        <div th:if="${#fields.hasErrors('email')}" th:errors="*{email}"></div>
         </div>
         
         <div class="mb-3">
         <label for="dataNascimento" class="form-label">Data de nascimento</label>
-        <input type="date" class="form-control" id="dataNascimento"  th:field="*{date}"/>
+        <input type="date" class="form-control" id="dataNascimento" th:field="*{date}"/>
+        <!--Mensagem de erro-->
+        <div th:if="${#fields.hasErrors('date')}" th:errors="*{date}"></div>
+        </div>
         
         <input type="hidden" th:field="*{id}"/>
-
+       
         <button type="submit" class="btn btn-success" style="margin-top: 10px;">Salvar</button>
 
         <a  class="btn btn-danger" style="margin-top: 10px;"href="/principal">Voltar</a>

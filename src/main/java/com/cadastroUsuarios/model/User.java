@@ -10,6 +10,9 @@ import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jakarta.persistence.Table;
+import jakarta.validation.constraints.Email;
+import jakarta.validation.constraints.NotBlank;
+import jakarta.validation.constraints.NotNull;
 
 @Entity 
 @Table(name="user_tbl")
@@ -21,14 +24,19 @@ public class User {
     @Column(name="id_user")
     private Long id;
      
+    @NotBlank(message = "**Nome obrigatório**")
     @Column(name="name_user")
     private String name;
 
+    @NotNull(message = "**Data de nascimento obrigatória**")
     @Column(name= "date_user")
     @DateTimeFormat(pattern="yyyy-MM-dd")
     private LocalDate date;
+    
 
-     @Column(name="email_user")
+    @NotBlank(message = "**Email obrigatório**")
+    @Email(message = "Email inválido")
+    @Column(name="email_user")
     private String email;
 
 

@@ -10,9 +10,13 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.servlet.ModelAndView;
+import jakarta.validation.Valid;
 
-import com.cadastroUsuarios.repository.UserRepository;
+
+
+
 import com.cadastroUsuarios.model.User;
+import com.cadastroUsuarios.repository.UserRepository;
 
 
 @Controller
@@ -29,7 +33,7 @@ public class UserController {
 
      //Salvar 
     @PostMapping("/salvarUser")
-    public ModelAndView salvar(User user, BindingResult result){
+    public ModelAndView salvar(@Valid User user, BindingResult result){
         if(result.hasErrors()){
             return cadastrar(user);
         }  
